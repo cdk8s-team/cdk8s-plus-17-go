@@ -246,6 +246,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addHostRule", GoMethod: "AddHostRule"},
 			_jsii_.MemberMethod{JsiiMethod: "addRule", GoMethod: "AddRule"},
 			_jsii_.MemberMethod{JsiiMethod: "addRules", GoMethod: "AddRules"},
+			_jsii_.MemberMethod{JsiiMethod: "addTls", GoMethod: "AddTls"},
 			_jsii_.MemberProperty{JsiiProperty: "apiObject", GoGetter: "ApiObject"},
 			_jsii_.MemberProperty{JsiiProperty: "metadata", GoGetter: "Metadata"},
 			_jsii_.MemberProperty{JsiiProperty: "name", GoGetter: "Name"},
@@ -275,6 +276,10 @@ func init() {
 	_jsii_.RegisterStruct(
 		"cdk8s-plus-17.IngressV1Beta1Rule",
 		reflect.TypeOf((*IngressV1Beta1Rule)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"cdk8s-plus-17.IngressV1Beta1Tls",
+		reflect.TypeOf((*IngressV1Beta1Tls)(nil)).Elem(),
 	)
 	_jsii_.RegisterClass(
 		"cdk8s-plus-17.Job",

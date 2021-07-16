@@ -1232,6 +1232,7 @@ type IngressV1Beta1 interface {
 	AddHostRule(host *string, path *string, backend IngressV1Beta1Backend)
 	AddRule(path *string, backend IngressV1Beta1Backend)
 	AddRules(rules ...*IngressV1Beta1Rule)
+	AddTls(tls *[]*IngressV1Beta1Tls)
 	OnPrepare()
 	OnSynthesize(session constructs.ISynthesisSession)
 	OnValidate() *[]*string
@@ -1354,6 +1355,14 @@ func (i *jsiiProxy_IngressV1Beta1) AddRules(rules ...*IngressV1Beta1Rule) {
 	)
 }
 
+func (i *jsiiProxy_IngressV1Beta1) AddTls(tls *[]*IngressV1Beta1Tls) {
+	_jsii_.InvokeVoid(
+		i,
+		"addTls",
+		[]interface{}{tls},
+	)
+}
+
 // Perform final modifications before synthesis.
 //
 // This method can be implemented by derived constructs in order to perform
@@ -1456,6 +1465,14 @@ type IngressV1Beta1Props struct {
 	// You can also add rules later using `addRule()`, `addHostRule()`,
 	// `addDefaultBackend()` and `addHostDefaultBackend()`.
 	Rules *[]*IngressV1Beta1Rule `json:"rules"`
+	// TLS settings for this ingress.
+	//
+	// Using this option tells the ingress controller to expose a TLS endpoint.
+	// Currently the Ingress only supports a single TLS port, 443. If multiple
+	// members of this list specify different hosts, they will be multiplexed on
+	// the same port according to the hostname specified through the SNI TLS
+	// extension, if the ingress controller fulfilling the ingress supports SNI.
+	Tls *[]*IngressV1Beta1Tls `json:"tls"`
 }
 
 // Represents the rules mapping the paths under a specified host to the related backend services.
@@ -1477,6 +1494,21 @@ type IngressV1Beta1Rule struct {
 	Host *string `json:"host"`
 	// Path is an extended POSIX regex as defined by IEEE Std 1003.1, (i.e this follows the egrep/unix syntax, not the perl syntax) matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional "path" part of a URL as defined by RFC 3986. Paths must begin with a '/'.
 	Path *string `json:"path"`
+}
+
+// Represents the TLS configuration mapping that is passed to the ingress controller for SSL termination.
+type IngressV1Beta1Tls struct {
+	// Hosts are a list of hosts included in the TLS certificate.
+	//
+	// The values in
+	// this list must match the name/s used in the TLS Secret.
+	Hosts *[]*string `json:"hosts"`
+	// Secret is the secret that contains the certificate and key used to terminate SSL traffic on 443.
+	//
+	// If the SNI host in a listener conflicts with
+	// the "Host" header field used by an IngressRule, the SNI host is used for
+	// termination and value of the Host header is used for routing.
+	Secret ISecret `json:"secret"`
 }
 
 // A Job creates one or more Pods and ensures that a specified number of them successfully terminate.
