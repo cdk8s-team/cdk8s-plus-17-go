@@ -1,10 +1,8 @@
-## cdk8s-plus-17-go
+# ⚠️ Deprecation Warning
 
-Go bindings for [cdk8s-plus-17](https://github.com/cdk8s-team/cdk8s-plus-17)
+The `cdk8splus17` repo is now deprecated. We are now maintaining `cdk8splus22`, `cdk8splus21`, and `cdk8splus20` in a single [cdk8s-plus](https://github.com/cdk8s-team/cdk8s-plus-go) repository.
 
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+Please refer to our [FAQ](https://cdk8s.io/docs/latest/plus/#faq) to select the appropriate package for you. 
 
 ## License
 
